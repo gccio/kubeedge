@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"sync"
 
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 )
 
 // LocationCache cache the map of node, pod, configmap, secret
@@ -63,6 +63,9 @@ func (lc *LocationCache) newNodes(oldNodes []string, node string) []string {
 
 // AddOrUpdatePod add pod to node, pod to configmap, configmap to pod, pod to secret, secret to pod relation
 func (lc *LocationCache) AddOrUpdatePod(pod v1.Pod) {
+	if pod.GetObjectMeta().GetDeletionTimestamp() != nil {
+		return
+	}
 	configMaps, secrets := lc.PodConfigMapsAndSecrets(pod)
 	for _, c := range configMaps {
 		configMapKey := fmt.Sprintf("%s/%s", pod.Namespace, c)
