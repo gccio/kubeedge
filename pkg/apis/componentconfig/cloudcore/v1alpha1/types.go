@@ -120,6 +120,19 @@ type CloudHub struct {
 	// EdgeCertSigningDuration indicates the validity period of edge certificate
 	// default 365d
 	EdgeCertSigningDuration time.Duration `json:"edgeCertSigningDuration,omitempty"`
+
+	Secret *CloudSecret `json:"secret,omitempty"`
+}
+
+type CloudSecret struct {
+	TokenSecretName      string `json:"tokenSecretName"`
+	TokenDataName        string `json:"tokenDataName"`
+	CaSecretName         string `json:"caSecretName"`
+	CloudCoreSecretName  string `json:"cloudCoreSecretName"`
+	CaDataName           string `json:"caDataName"`
+	CaKeyDataName        string `json:"caKeyDataName"`
+	CloudCoreCertName    string `json:"cloudCoreCertName"`
+	CloudCoreKeyDataName string `json:"cloudCoreKeyDataName"`
 }
 
 // CloudHubQUIC indicates the quic server config

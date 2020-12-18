@@ -10,20 +10,34 @@ import (
 	"k8s.io/client-go/kubernetes"
 
 	"github.com/kubeedge/kubeedge/cloud/pkg/edgecontroller/utils"
+	"github.com/kubeedge/kubeedge/pkg/apis/componentconfig/cloudcore/v1alpha1"
 )
 
 const (
 	NamespaceSystem string = "kubeedge"
-
-	TokenSecretName      string = "tokensecret"
-	TokenDataName        string = "tokendata"
-	CaSecretName         string = "casecret"
-	CloudCoreSecretName  string = "cloudcoresecret"
-	CaDataName           string = "cadata"
-	CaKeyDataName        string = "cakeydata"
-	CloudCoreCertName    string = "cloudcoredata"
-	CloudCoreKeyDataName string = "cloudcorekeydata"
 )
+
+var (
+	TokenSecretName      string
+	TokenDataName        string
+	CaSecretName         string
+	CloudCoreSecretName  string
+	CaDataName           string
+	CaKeyDataName        string
+	CloudCoreCertName    string
+	CloudCoreKeyDataName string
+)
+
+func InitSecret(secret *v1alpha1.CloudSecret) {
+	TokenSecretName = secret.TokenSecretName
+	TokenDataName = secret.TokenDataName
+	CaSecretName = secret.CaSecretName
+	CloudCoreSecretName = secret.CloudCoreSecretName
+	CaDataName = secret.CaDataName
+	CaKeyDataName = secret.CaKeyDataName
+	CloudCoreCertName = secret.CloudCoreCertName
+	CloudCoreKeyDataName = secret.CloudCoreKeyDataName
+}
 
 func GetSecret(secretName string, ns string) (*corev1.Secret, error) {
 	cli, err := utils.KubeClient()

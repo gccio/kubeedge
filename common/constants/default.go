@@ -27,6 +27,16 @@ const (
 	DefaultCertFile  = "/etc/kubeedge/certs/server.crt"
 	DefaultKeyFile   = "/etc/kubeedge/certs/server.key"
 
+	// SecretName
+	DefaultTokenSecretName      = "tokensecret"
+	DefaultTokenDataName        = "tokendata"
+	DefaultCaSecretName         = "casecret"
+	DefaultCloudCoreSecretName  = "cloudcoresecret"
+	DefaultCaDataName           = "cadata"
+	DefaultCaKeyDataName        = "cakeydata"
+	DefaultCloudCoreCertName    = "cloudcoredata"
+	DefaultCloudCoreKeyDataName = "cloudcorekeydata"
+
 	DefaultCAURL   = "/ca.crt"
 	DefaultCertURL = "/edge.crt"
 

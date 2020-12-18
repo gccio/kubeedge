@@ -36,6 +36,7 @@ func newCloudHub(enable bool) *cloudHub {
 func Register(hub *v1alpha1.CloudHub, kubeAPIConfig *v1alpha1.KubeAPIConfig) {
 	hubconfig.InitConfigure(hub, kubeAPIConfig)
 	core.Register(newCloudHub(hub.Enable))
+	httpserver.InitSecret(hub.Secret)
 }
 
 func (a *cloudHub) Name() string {

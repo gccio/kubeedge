@@ -57,6 +57,16 @@ func NewDefaultCloudCoreConfig() *CloudCoreConfig {
 				AdvertiseAddress:        []string{advertiseAddress.String()},
 				DNSNames:                []string{""},
 				EdgeCertSigningDuration: 365,
+				Secret: &CloudSecret{
+					TokenSecretName:      constants.DefaultTokenSecretName,
+					TokenDataName:        constants.DefaultTokenDataName,
+					CaSecretName:         constants.DefaultCaSecretName,
+					CloudCoreSecretName:  constants.DefaultCloudCoreSecretName,
+					CaDataName:           constants.DefaultCaDataName,
+					CaKeyDataName:        constants.DefaultCaKeyDataName,
+					CloudCoreCertName:    constants.DefaultCloudCoreCertName,
+					CloudCoreKeyDataName: constants.DefaultCloudCoreKeyDataName,
+				},
 				Quic: &CloudHubQUIC{
 					Enable:             false,
 					Address:            "0.0.0.0",
